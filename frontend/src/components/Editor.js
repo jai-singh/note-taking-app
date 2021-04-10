@@ -71,6 +71,7 @@ const Editor = ({ setSelectedNote, selectedNote , updateNoteInServer, changeCont
 
   useEffect(() => {
     if (state.content !== selectedNote.content) setState({ content: selectedNote.content });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedNote.content]);
   
   const updateTitle = (updatedTitle) => {

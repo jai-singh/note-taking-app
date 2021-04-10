@@ -25,21 +25,33 @@ const useStyles = makeStyles({
     '&:hover': {
       background: 'linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6)'
     }
+  },
+  name: {
+    position: 'center',
+    cursor: 'context-menu',
+    '&:hover': {
+      background: 'white  '
+    }
   }
 })
 
-const UserMenu = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+const UserMenu = ({name, logOut, setShowChangePwd }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null)
 
   const classes = useStyles()
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
+
+  const handleChangePwd = () => {
+    setShowChangePwd(true)
+    setAnchorEl(null)
+  }
 
   return (
     <div>
@@ -59,8 +71,9 @@ const UserMenu = () => {
         onClose={handleClose}
         classes={{paper: classes.menu}}      
       >
-        <MenuItem onClick={handleClose} className={classes.menuOption}>Change Password</MenuItem>
-        <MenuItem onClick={handleClose} className={classes.menuOption}>Logout</MenuItem>
+        <MenuItem className={classes.name}>{name}</MenuItem>
+        <MenuItem onClick={handleChangePwd} className={classes.menuOption}>Change Password</MenuItem>
+        <MenuItem onClick={logOut} className={classes.menuOption}>Logout</MenuItem>
       </Menu>
     </div>
   );

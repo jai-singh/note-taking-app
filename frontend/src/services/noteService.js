@@ -1,30 +1,47 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3001/notes'
+const url = 'http://localhost:3001/api/notes'
+let token = null 
+let config = null
 
-const getNotes = async () => {
-  return await axios
-    .get(url)
+const setToken = newToken => {
+  token = `bearer ${newToken}`
+  config = {
+    headers: { Authorization: token }
+  }
+}
+
+const getNotes = () => { 
+  return axios
+    .get(url, config)
     .then(response => response.data)
 } 
 
-const addNote = async (note) => {
-  return await axios
-    .post(url, note)
+const addNote = (note) => {
+  return axios
+    .post(url, note, config)
     .then(response => response.data)
 }
 
-const deleteNote = async (id) => {
-  return await axios
-    .delete(`${url}/${id}`)
+const deleteNote = (id) => {
+  return axios
+    .delete(`${url}/${id}`, config)
     .then(response => response.data)
 }
 
-const updateNote = async (id, updatedNote) => {
-  return await axios
-    .put(`${url}/${id}`, updatedNote)
+const updateNote = (id, updatedNote) => {
+  return axios
+    .put(`${url}/${id}`, updatedNote, config)
 }
 
-const noteService = { getNotes, addNote, deleteNote, updateNote }
+const updatePassword = upadtedCredentials => {
+  const updatePasswordUrl = 'http://localhost:3001/api/signin'
+  return axios
+    .put(updatePasswordUrl, upadtedCredentials, config)
+    .then(response => response.data)
+}
+
+
+const noteService = { setToken, getNotes, addNote, deleteNote, updateNote, updatePassword }
 
 export default noteService

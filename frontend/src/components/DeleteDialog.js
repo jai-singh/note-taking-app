@@ -4,11 +4,12 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
-export default function AlertDialog({ note, warningStatus, setWarningStatus, remove }) {
+export default function DeleteDialog({ note, warningStatus, setWarningStatus, remove }) {
   const [open, setOpen] = useState(false)
   
   useEffect(() => {
     if(open !== warningStatus) setOpen(warningStatus)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[warningStatus])
   
   const handleClose = () => {

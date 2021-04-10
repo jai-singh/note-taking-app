@@ -19,6 +19,7 @@ html, body {
   box-sizing: border-box;
   width: calc(100% - 300px);
   float: left;
+  background-color: white;
 }
 .ql-container {
   box-sizing: border-box;

@@ -6,6 +6,17 @@ import noteService from '../services/noteService'
 import DeleteDialog from './DeleteDialog'
 
 const useStyles = makeStyles({
+  sidebarContainer: {
+    marginTop: '0px',
+    width: '300px',
+    height: '100%',
+    boxSizing: 'border-box',
+    float: 'left',
+    overflow: 'auto',
+    boxShadow: '0px 0px 2px black',
+    padding: '0px',
+    fontFamily: 'Roboto, sans-serif'
+  },
   newNoteBtn: {    
     width: '100%',
     height: '40px',
@@ -17,16 +28,6 @@ const useStyles = makeStyles({
     '&:hover': {
       background: 'linear-gradient(#1c92d2,#5B86E5)'
     }   
-  },
-  sidebarContainer: {
-    marginTop: '0px',
-    width: '300px',
-    height: '100%',
-    boxSizing: 'border-box',
-    float: 'left',
-    overflow: 'auto',
-    boxShadow: '0px 0px 2px black',
-    padding: '0px'
   },
   newNoteInput: {
     width: '100%',

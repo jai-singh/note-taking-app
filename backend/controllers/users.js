@@ -8,12 +8,14 @@ const config = require('../utils/config')
 userRouter.post('/', async (req, res) => {
   const body = req.body  
   if(!body.password || !(body.password.length >= 8) || !body.username) {
-    if(!(body.password.length >= 8)) {
-      res.status(400).json({'error': 'Password is too short'})
+    let error = ''
+    if(!(body.password.length >= 8)) {      
+       error = 'Password is too short'
+       if(body.password.length === 0)  error = 'Password not provided'
     } else {
-      res.status(400).json({'error': 'Password or Username not provided'})
-    }     
-    return
+      error = 'Username not provided'
+    } 
+    return res.status(400).json({'error': error})
   }
   
   const saltRounds = 10   

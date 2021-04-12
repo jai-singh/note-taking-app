@@ -12,8 +12,15 @@ const errorHandler = require('./utils/errorHandler')
 require('dotenv').config()
 
 const mongoUrl = config.MONGODB_URI
-mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true})
 
+mongoose.connect(mongoUrl, {
+  useNewUrlParser: true, 
+  useUnifiedTopology: true, 
+  useFindAndModify: false, 
+  useCreateIndex: true
+})
+
+app.use(express.static('build'))
 app.use(cors())
 app.use(express.json())
 app.use(middleware.tokenExtractor)

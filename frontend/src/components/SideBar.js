@@ -66,7 +66,10 @@ const useStyles = makeStyles({
   }
 });
 
-const SideBar = ({ notes, setNotes, selectedNoteIndex, setSelectedNoteIndex, setSelectedNote, visibleNotes, setVisibleNotes }) => {
+const SideBar = ({ notes, setNotes, selectedNoteIndex, 
+  setSelectedNoteIndex, selectedNote, setSelectedNote, visibleNotes, 
+  setVisibleNotes, updateNow }) => {
+
   const [newNoteStatus, setNewNoteStatus ] = useState(false)
   const [title, setTitle] = useState('')
   const [term, setTerm] = useState('')
@@ -156,6 +159,8 @@ const SideBar = ({ notes, setNotes, selectedNoteIndex, setSelectedNoteIndex, set
         setSelectedNote={setSelectedNote}
         selectedNoteIndex = {selectedNoteIndex}
         deleteNote={deleteNote}
+        selectedNote={selectedNote}
+        updateNow={updateNow}
         />     
       <DeleteDialog 
         note={tempNote} 

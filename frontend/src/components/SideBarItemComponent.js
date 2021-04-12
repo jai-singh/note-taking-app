@@ -29,10 +29,13 @@ const useStyles = makeStyles({
   }
 });
 
-const SideBarItemComponent = ({ note, selectedNoteIndex, setSelectedNoteIndex, setSelectedNote, deleteNote }) => {
+const SideBarItemComponent = ({ note, selectedNoteIndex, setSelectedNoteIndex, 
+  selectedNote, setSelectedNote, deleteNote, updateNow }) => {
+
   const classes = useStyles()
 
   const selectNote = () => {
+    if(selectedNote !== null) updateNow()
     setSelectedNote(note)
     setSelectedNoteIndex(note.id)
   }

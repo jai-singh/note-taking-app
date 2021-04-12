@@ -78,8 +78,8 @@ const Editor = ({ setSelectedNote, selectedNote , updateNoteInServer, changeCont
     updatedNote = {
       ...selectedNote, title: updatedTitle
     }    
-    update()
-    setSelectedNote(updatedNote)    
+    setSelectedNote(updatedNote)
+    update()    
   }
   
   return (
@@ -94,9 +94,11 @@ const Editor = ({ setSelectedNote, selectedNote , updateNoteInServer, changeCont
       <ReactQuill 
         key="editor"
         value={state.content || ''}
-        onChange={value => {
-          setState({content: value})
-          changeContent(value)
+        onChange={(value, delta, source) => {
+          if(source === 'user') {
+            setState({content: value})
+            changeContent(value)
+          }
         }} 
         modules={modules} 
         formats={formats}  

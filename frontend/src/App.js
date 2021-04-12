@@ -40,13 +40,15 @@ const App = () => {
     } 
   },[])
 
-  const updateNoteInServer = async (note) => {    
-    await noteService.updateNote(note.id, note)
+  const updateNoteInServer = async (note) => {      
     const newNotesList = notes.map(n => n.id === note.id ? note : n)
     const newVisibleList = visibleNotes.map(n => n.id === note.id ? note : n)
     setNotes(newNotesList)
     setVisibleNotes(newVisibleList)
+    await noteService.updateNote(note.id, note)
   }
+
+  const updateNow = () => updateNoteInServer(selectedNote)
 
   const update = debounce(() => {
     updateNoteInServer(updatedNote)
@@ -56,6 +58,7 @@ const App = () => {
     updatedNote = {
       ...selectedNote, content: updatedContent
     }
+    setSelectedNote(updatedNote)
     update()
   }
 
@@ -140,9 +143,11 @@ const App = () => {
           setNotes={setNotes} 
           selectedNoteIndex={selectedNoteIndex}
           setSelectedNoteIndex={setSelectedNoteIndex} 
+          selectedNote={selectedNote}
           setSelectedNote={setSelectedNote} 
           visibleNotes={visibleNotes}
           setVisibleNotes={setVisibleNotes}
+          updateNow={updateNow}
         />
         {
           selectedNote ? 

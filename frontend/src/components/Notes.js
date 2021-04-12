@@ -11,7 +11,8 @@ const useStyles = makeStyles({
 })
 
 //this component will map list of notes to the sidebar
-const Notes = ({ notes, selectedNoteIndex, setSelectedNoteIndex, setSelectedNote, deleteNote }) => {
+const Notes = ({ notes, selectedNoteIndex, setSelectedNoteIndex, 
+  selectedNote, setSelectedNote, deleteNote, updateNow }) => {
 
   const classes = useStyles()
   
@@ -27,6 +28,8 @@ const Notes = ({ notes, selectedNoteIndex, setSelectedNoteIndex, setSelectedNote
               setSelectedNoteIndex = {setSelectedNoteIndex}
               setSelectedNote = {setSelectedNote}
               deleteNote = {deleteNote}
+              selectedNote={selectedNote}
+              updateNow={updateNow}
             />
             <Divider />
           </div>

@@ -4,8 +4,10 @@ import { Text, StyleSheet, View } from 'react-native';
 import Editor from './Editor'
 import HomeScreen from './Home'
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import Icon from 'react-native-vector-icons/Ionicons'
+import { createDrawerNavigator, DrawerContent } from '@react-navigation/drawer';
+// import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import DrawerContainer from './DrawerContainer'
 
 const Drawer = createDrawerNavigator();
 
@@ -30,11 +32,21 @@ const HomeStackScreen = ({navigation}) => {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <Icon.Button
-              name="ios-menu" 
+              name="menu" 
               size={25} 
               backgroundColor='#36D1DC'
               onPress={
                 () => navigation.openDrawer()
+              }
+            />
+          ),
+          headerRight: () => (
+            <Icon.Button
+              name="plus"
+              size={25} 
+              backgroundColor='#36D1DC'
+              onPress={
+                () => {navigation.navigate('Editor')} 
               }
             />
           )
@@ -59,7 +71,7 @@ const EditorStackScreen = ({navigation}) => (
       headerTitleAlign: 'center',
       headerLeft: () => (
             <Icon.Button
-              name="ios-menu" 
+              name="menu" 
               size={25} 
               backgroundColor='#36D1DC'
               onPress={
@@ -90,11 +102,14 @@ const styles = StyleSheet.create({
 
 const Main = () => {  
   return (
-    <Drawer.Navigator initialRouteName="Home" >
+    <Drawer.Navigator 
+      initialRouteName="Home" 
+      drawerContent={props => <DrawerContainer {...props} />}
+    >
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="Editor" component={EditorStackScreen} />
     </Drawer.Navigator>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main

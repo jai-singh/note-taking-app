@@ -8,9 +8,6 @@ const HomeScreen = ({ navigation }) => {
         onPress={() => navigation.navigate('Editor')}
         title="Go to editor"
       />
-      <Text>
-        YOOOOOOOOO
-      </Text>
     </View>
   );
 }

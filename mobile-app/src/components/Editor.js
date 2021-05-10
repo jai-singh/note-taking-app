@@ -39,6 +39,7 @@ const Editor = () => {
       height: 27,
       borderBottomColor: '#D3D3D3',
       borderBottomWidth: 1,
+      fontWeight: 'bold'
     }
   });
 

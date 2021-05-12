@@ -5,9 +5,9 @@ import Editor from './Editor'
 import HomeScreen from './Home'
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, DrawerContent } from '@react-navigation/drawer';
-// import Icon from 'react-native-vector-icons/Ionicons'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import DrawerContainer from './DrawerContainer'
+import RootStackScreen from './RootStackScreen'
 
 const Drawer = createDrawerNavigator();
 
@@ -102,13 +102,14 @@ const styles = StyleSheet.create({
 
 const Main = () => {  
   return (
-    <Drawer.Navigator 
-      initialRouteName="Home" 
-      drawerContent={props => <DrawerContainer {...props} />}
-    >
-        <Drawer.Screen name="Home" component={HomeStackScreen} />
-        <Drawer.Screen name="Editor" component={EditorStackScreen} />
-    </Drawer.Navigator>
+    <RootStackScreen />
+    // <Drawer.Navigator 
+    //   initialRouteName="Home" 
+    //   drawerContent={props => <DrawerContainer {...props} />}
+    // >
+    //     <Drawer.Screen name="Home" component={HomeStackScreen} />
+    //     <Drawer.Screen name="Editor" component={EditorStackScreen} />
+    // </Drawer.Navigator>
   )
 }
 
